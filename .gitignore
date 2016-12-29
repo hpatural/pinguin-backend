@@ -1,5 +1,5 @@
 # Created by https://www.gitignore.io/api/android,osx,swift,objective-c
-
+node_modules/
 ### Android ###
 # Built application files
 *.apk
