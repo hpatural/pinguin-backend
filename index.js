@@ -29,7 +29,9 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
-app.listen(8080);
+
+var port = process.env.PORT || 8080;
+app.listen(port);
 
 
 //INIT GCM : 
