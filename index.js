@@ -44,6 +44,9 @@ var sender = new gcm.Sender('AIzaSyD8ruTyxlKgfRzySjNm-NuzJ4hXGePjvg0');
 //Send a friendship request
 app.post('/:id1/users/:id2', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
+    console.log(req.body);
+    console.log(req.body.username);
+
     getUserToken(req.params.id2, FRIENDSHIP_REQUEST, req.body.username);
 
     res.send("ok");
