@@ -4,10 +4,11 @@ var bodyParser = require('body-parser');
 var firebase = require("firebase");
 
 //Constants
-const FRIENDSHIP_REQUEST = "friendshipRequest"
-const FRIENDSHIP_ACCEPTED = "friendshipAccepted"
-const NOTIFICATION_TYPE = "notificationType"
-const NOTIFICATION_CONTACT_USERNAME = "contactUsername"
+const FRIENDSHIP_REQUEST = "friendshipRequest";
+const FRIENDSHIP_ACCEPTED = "friendshipAccepted";
+const NOTIFICATIONS_TYPE_NEW_MOVIE = "newMovie";
+const NOTIFICATION_TYPE = "notificationType";
+const NOTIFICATION_CONTACT_USERNAME = "contactUsername";
 
 
 //INIT FIRBASE DATABASE: 
@@ -64,9 +65,15 @@ app.put('/:id1/users/:id2', function(req, res) {
 //Send a friendship request
 app.post('/:userId/movies/:movieId', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
-    console.log(req.body);
-    console.log(req.body.username);
+    var username = req.body.username;
+	var title = req.body.title;
+	var members = req.body.members;
 
+	console.log(members);
+	for(var i = 0; i < members.length;i++){
+		console.log(members[i]);
+		getUserToken(members[i], NOTIFICATIONS_TYPE_NEW_MOVIE, req.body.username);
+	}
     //getUserToken(req.params.id2, FRIENDSHIP_REQUEST, req.body.username);
 
     res.send("ok");
