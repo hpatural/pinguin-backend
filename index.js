@@ -68,10 +68,10 @@ app.post('/:userId/movies/:movieId', function(req, res) {
     var username = req.body.username;
 	var title = req.body.title;
 	var members = req.body.members;
-
-	console.log(members);
+	console.log("iciiiiiii");
+	console.log("members : " + members);
 	for(var i = 0; i < members.length;i++){
-		console.log(members[i]);
+		console.log("i : " + members[i]);
 		getUserToken(members[i], NOTIFICATIONS_TYPE_NEW_MOVIE, req.body.username);
 	}
     //getUserToken(req.params.id2, FRIENDSHIP_REQUEST, req.body.username);
