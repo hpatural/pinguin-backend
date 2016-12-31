@@ -65,9 +65,10 @@ app.put('/:id1/users/:id2', function(req, res) {
 //Send a friendship request
 app.post('/:userId/movies/:movieId', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
-    var username = req.body.username;
-	var title = req.body.title;
-	var members = req.body.members;
+    var body = JSON.parse(req.body);
+    var username = body.username;
+	var title = body.title;
+	var members = body.members;
 	console.log("iciiiiiii");
 	console.log("members : " + members);
 	for(var i = 0; i < members.length;i++){
@@ -101,6 +102,8 @@ app.post('/:userId/movies/:movieId', function(req, res) {
 }
 
 function getUserToken(userId, notificationType, contactUsername) {
+	console.log("dans getUserToken");
+	console.log(userId);
 	return firebase.database().ref('/indexes/gcmToken/' + userId).once('value').then(function(snapshot) {
 		var gcmToken = snapshot.val();
 		console.log("trouvé le gcm token : " + gcmToken);
