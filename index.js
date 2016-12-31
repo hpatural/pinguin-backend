@@ -103,6 +103,7 @@ app.post('/:userId/movies/:movieId', function(req, res) {
 function getUserToken(userId, notificationType, contactUsername) {
 	return firebase.database().ref('/indexes/gcmToken/' + userId).once('value').then(function(snapshot) {
 		var gcmToken = snapshot.val();
+		console.log("trouvé le gcm token : " + gcmToken);
 	  	sendNotification(gcmToken, notificationType, contactUsername);
 
 	});
