@@ -61,6 +61,17 @@ app.put('/:id1/users/:id2', function(req, res) {
     res.send("ok");
 });
 
+//Send a friendship request
+app.post('/:userId/movies/:movieId', function(req, res) {
+    res.setHeader('Content-Type', 'text/plain');
+    console.log(req.body);
+    console.log(req.body.username);
+
+    //getUserToken(req.params.id2, FRIENDSHIP_REQUEST, req.body.username);
+
+    res.send("ok");
+});
+
  
  function sendNotification(gcmToken, notificationType, contactUsername) {
 
